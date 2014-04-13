@@ -10,16 +10,21 @@
 
 
 ## Installation
-1. Follow instructions from the [official Github page](https://github.com/volmer/bootsy/)
+1. Add this to your Gemfile
+```ruby
+gem 'bootsy', :git => 'git@github.com:mlensment/bootsy.git'
+```
 
-2. Install [Nivo Lighbox](http://dev7studios.com/plugins/nivo-lightbox/) to your project
+2. Follow instructions from the [official Github page](https://github.com/volmer/bootsy/)
 
-3. Add this to your application.css.scss
+3. Install [Nivo Lighbox](http://dev7studios.com/plugins/nivo-lightbox/) to your project
+
+4. Add this to your application.css.scss
 ```css
 @import "bootsy";
 ```
 
-3. Add this to your main javascript file
+5. Add this to your main javascript file
 ```javascript
 var ready = function() {
   $('a.nivo-image').nivoLightbox();
