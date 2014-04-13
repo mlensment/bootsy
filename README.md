@@ -3,8 +3,9 @@
 *Bootsy* is a WYSIWYG solution for Rails based on [Bootstrap-wysihtml5](https://github.com/jhollingworth/bootstrap-wysihtml5) which includes image uploads via [CarrierWave](https://github.com/carrierwaveuploader/carrierwave).
 
 ## What's improved in this fork?
-* Works with 'bootstrap-sass', '~> 3.1.1'
-* Nivo Lightbox support, out of box
+* Image modal works with [bootstrap-sass](https://github.com/twbs/bootstrap-sass) version 3.1.1
+* Parser rules removed (stupid thing that edited your HTML against your will)
+* [Nivo Lighbox](http://dev7studios.com/plugins/nivo-lightbox/) support for images, out of box
 * Alignment options for the editor
 
 
