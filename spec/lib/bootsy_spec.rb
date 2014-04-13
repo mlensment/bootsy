@@ -21,6 +21,7 @@ describe Bootsy do
       it { should include(html: false) }
       it { should include(image: true) }
       it { should include(color: true) }
+      it { should include(alignment: false) }
     end
 
     its(:image_versions_available) { should == [:small, :medium, :large, :original] }

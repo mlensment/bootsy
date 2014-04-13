@@ -1,3 +1,13 @@
+.wysiwyg-text-align-left {
+  text-align: left;
+}
+.wysiwyg-text-align-center {
+  text-align: center;
+}
+.wysiwyg-text-align-right {
+  text-align: right;
+}
+
 .wysiwyg-color-black {
   color: black;
 }
@@ -134,6 +144,10 @@ textarea.bootsy:required:invalid {
 }
 
 .bootsy-image {
+  margin-bottom: 15px;
+}
+
+.bootsy-nivo-image {
   margin-bottom: 15px;
 }
 

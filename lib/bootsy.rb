@@ -14,6 +14,7 @@ module Bootsy
   # Default editor options
   mattr_accessor :editor_options
   @@editor_options = {
+    alignment: true,
     font_styles: true,
     emphasis: true,
     lists: true,

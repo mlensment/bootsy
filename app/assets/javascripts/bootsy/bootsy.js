@@ -40,6 +40,10 @@ Bootsy.Area = function($el) {
     this.options.color = false;
   }
 
+  if ($el.data('bootsy-alignment') === false) {
+    this.options.alignment = false;
+  }
+
   // Delegate find to the modal
   this.find = this.modal.find.bind(this.modal);
 };
@@ -174,6 +178,23 @@ Bootsy.Area.prototype.insertImage = function(image) {
   this.editor.composer.commands.exec('insertImage', image);
 };
 
+// Inster image with nivo-lightbox
+Bootsy.Area.prototype.insertNivoImage = function(obj) {
+  var img = '<img src="' + obj.small.src + '" alt="' + obj.small.alt + '" />';
+  var link = '<a href="' + obj.large.src + '" class="nivo-image" data-lightbox-gallery="gallery">' + img + '</a>';
+
+  this.modal.modal('hide');
+
+  this.editor.currentView.element.focus();
+
+  if (this.caretBookmark) {
+    this.editor.composer.selection.setBookmark(this.caretBookmark);
+    this.caretBookmark = null;
+  }
+
+  this.editor.composer.commands.exec("insertHTML", link);
+};
+
 // Open Bootsy modal
 Bootsy.Area.prototype.openImagesModal = function(editor) {
   editor.currentView.element.focus(false);
@@ -233,6 +254,35 @@ Bootsy.Area.prototype.init = function() {
         imageObject.align = $(this).data('position');
 
         insert(imageObject);
+      });
+
+
+      //Nivo Image insert
+      var insertNivoImage = this.insertNivoImage.bind(this);
+
+      this.modal.on('click', '.bootsy-nivo-image .insert', function(e) {
+        var img, obj;
+        var imagePrefix = '/' + $(this).attr('data-image-size') + '_';
+
+        e.preventDefault();
+
+        if ($(this).data('image-size') === 'original') {
+          imagePrefix = '/';
+        }
+
+        img = $(this).parents('.bootsy-nivo-image').find('img');
+
+        obj = {
+          large: {
+            src: img.attr('src').replace('/thumb_', '/large_')
+          },
+          small: {
+            src: img.attr('src').replace('/thumb_', imagePrefix),
+            alt: img.attr('alt').replace('Thumb', '')
+          }
+        };
+
+        insertNivoImage(obj);
       });
 
       // Let's use the uploader, not the static image modal

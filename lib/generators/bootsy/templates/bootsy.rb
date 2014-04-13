@@ -3,6 +3,7 @@ Bootsy.setup do |config|
   # Default editor options
   # You can override them locally by passing an editor_options hash to bootsy_area
   # config.editor_options = {
+  #   alignment: true,
   #   font_styles: true,
   #   emphasis: true,
   #   lists: true,

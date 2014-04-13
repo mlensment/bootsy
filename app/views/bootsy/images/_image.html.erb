@@ -1,23 +1,17 @@
-<div class="bootsy-image dropdown col-sm-2" data-id="<%= image.id %>">
+<div class="bootsy-nivo-image dropdown col-sm-2" data-id="<%= image.id %>">
   <%= link_to image_tag(image.image_file.thumb.url), '#', class: 'thumbnail',
     data: { toggle: 'dropdown' } %>
 
   <ul class="dropdown-menu" role="menu">
+    <li role="presentation" class="dropdown-header"><%= t 'bootsy.image.size' %></li>
 
     <% Bootsy.image_versions_available.each do |size| %>
-      <li role="presentation" class="dropdown-header">
-        <i class="icon-picture"></i>
-        <%= "#{t(size, scope: 'bootsy.image')} #{t('bootsy.image.size').downcase}" %>
+      <li role="presentation">
+        <%= link_to '#', class: 'insert', tabindex: '-1', role: 'menuitem',
+          data: { image_size: size.to_s } do %>
+          <%= t(size, scope: 'bootsy.image') %>
+        <% end %>
       </li>
-
-      <% [:left, :right, :inline].each do |position| %>
-        <li role="presentation">
-          <%= link_to '#', class: 'insert', tabindex: '-1', role: 'menuitem',
-            data: { image_size: size.to_s, position: position.to_s} do %>
-            <%= t position, scope: 'bootsy.image.position' %>
-          <% end %>
-        </li>
-      <% end %>
     <% end %>
 
     <% if Bootsy.allow_destroy %>

@@ -2,6 +2,17 @@
     "use strict";
 
     var tpl = {
+        "alignment": function(locale, options) {
+            var size = (options && options.size) ? ' btn-'+options.size : '';
+            return "<li>" +
+              "<div class='btn-group'>" +
+                "<a class='btn btn-default " + size + "' data-wysihtml5-command='justifyLeft' tabindex='-1' title='" + locale.alignment.left + "'><i class='glyphicon glyphicon-align-left'></i></a>" +
+                "<a class='btn btn-default " + size + "' data-wysihtml5-command='justifyCenter' tabindex='-1' title='" + locale.alignment.center + "'><i class='glyphicon glyphicon-align-center'></i></a>" +
+                "<a class='btn btn-default " + size + "' data-wysihtml5-command='justifyRight' tabindex='-1' title='" + locale.alignment.right + "'><i class='glyphicon glyphicon-align-right'></i></a>" +
+              "</div>" +
+            "</li>";
+        },
+
         "font-styles": function(locale, options) {
             var size = (options && options.size) ? ' btn-'+options.size : '';
             return "<li class='dropdown'>" +
@@ -409,6 +420,7 @@
         "font-styles": true,
         "color": false,
         "emphasis": true,
+        "alignment": true,
         "lists": true,
         "html": false,
         "link": true,
@@ -481,6 +493,11 @@
 
     var locale = $.fn.wysihtml5.locale = {
         en: {
+            alignment: {
+                left: "Left",
+                center: "Center",
+                right: "Right"
+            },
             font_styles: {
                 title: "Font style",
                 normal: "Normal text",
