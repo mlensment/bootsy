@@ -178,7 +178,7 @@ Bootsy.Area.prototype.insertImage = function(image) {
   this.editor.composer.commands.exec('insertImage', image);
 };
 
-// Inster image with nivo-lightbox
+// Insert image with nivo-lightbox
 Bootsy.Area.prototype.insertNivoImage = function(obj) {
   var img = '<img src="' + obj.small.src + '" alt="' + obj.small.alt + '" />';
   var link = '<a href="' + obj.large.src + '" class="nivo-image" data-lightbox-gallery="gallery">' + img + '</a>';
