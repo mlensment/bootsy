@@ -142,7 +142,7 @@ Bootsy.Area.prototype.setImageGallery = function() {
 
 // Delete image
 Bootsy.Area.prototype.deleteImage = function (id) {
-  var image = this.find('.bootsy-image[data-id="' + id + '"]');
+  var image = this.find('.bootsy-nivo-image[data-id="' + id + '"]');
 
   this.hideGalleryLoadingAnimation();
 
