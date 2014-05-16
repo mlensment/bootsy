@@ -12,19 +12,19 @@ module Bootsy
     # Process files as they are uploaded:
     process resize_to_limit: [1160, 2000]
 
-    version :large, :if => :large_avaliable? do
+    version :large, :if => :large_available? do
       process resize_to_fit: [Bootsy.large_image[:width], Bootsy.large_image[:height]]
     end
 
-    version :medium, :if => :medium_avaliable? do
+    version :medium, :if => :medium_available? do
       process resize_to_fit: [Bootsy.medium_image[:width], Bootsy.medium_image[:height]]
     end
 
-    version :small, :if => :small_avaliable? do
+    version :small, :if => :small_available? do
       process resize_to_fit: [Bootsy.small_image[:width], Bootsy.small_image[:height]]
     end
 
-    version :thumb, :if => :thumb_avaliable? do
+    version :thumb, :if => :thumb_available? do
       process resize_to_fill: [60, 60]
     end
 
