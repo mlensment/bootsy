@@ -6,7 +6,7 @@ module Bootsy
     storage Bootsy.storage
 
     def store_dir
-      "#{Bootsy.store_dir}/#{model.class.to_s.underscore}/#{model.id}"
+      "#{Bootsy.store_dir}"
     end
 
     # Process files as they are uploaded:
@@ -30,6 +30,22 @@ module Bootsy
 
     def extension_white_list
       %w(jpg jpeg gif png)
+    end
+
+    def filename
+      if original_filename
+        if model && model.read_attribute(mounted_as).present?
+          model.read_attribute(mounted_as)
+        else
+          "#{secure_token}.#{file.extension}" if original_filename.present?
+        end
+      end
+    end
+
+    protected
+    def secure_token
+      var = :"@#{mounted_as}_secure_token"
+      model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
     end
   end
 end
