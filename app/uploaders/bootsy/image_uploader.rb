@@ -13,19 +13,27 @@ module Bootsy
     process resize_to_limit: [1160, 2000]
 
     version :large do
-      process resize_to_fit: [Bootsy.large_image[:width], Bootsy.large_image[:height]]
+      if Bootsy.image_versions_available.include?(:large)
+        process resize_to_fit: [Bootsy.large_image[:width], Bootsy.large_image[:height]]
+      end
     end
 
     version :medium do
-      process resize_to_fit: [Bootsy.medium_image[:width], Bootsy.medium_image[:height]]
+      if Bootsy.image_versions_available.include?(:medium)
+        process resize_to_fit: [Bootsy.medium_image[:width], Bootsy.medium_image[:height]]
+      end
     end
 
     version :small do
-      process resize_to_fit: [Bootsy.small_image[:width], Bootsy.small_image[:height]]
+      if Bootsy.image_versions_available.include?(:small)
+        process resize_to_fit: [Bootsy.small_image[:width], Bootsy.small_image[:height]]
+      end
     end
 
     version :thumb do
-      process resize_to_fill: [60, 60]
+      if Bootsy.image_versions_available.include?(:thumb)
+        process resize_to_fill: [60, 60]
+      end
     end
 
     def extension_white_list
